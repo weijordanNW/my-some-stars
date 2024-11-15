@@ -1,0 +1,25 @@
+name: Update some list
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+  schedule:
+    # Execute every week at 0:00 CST (UTC+8), which is 16:00 UTC on the previous day
+    - cron: '0 16 * * 0' # This runs at 16:00 UTC on Saturday, which is 0:00 CST on Sunday
+  watch:
+    types: [started]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: some generator
+        uses: simonecorsi/mawesome@v2
+        with:
+          api-token: ${{ secrets.PERSONAL_TOKEN }}
+          github-email: ${{ secrets.USER_EMAIL }}
+          template-path: "template/README.ejs"
+          github-name: ${{ github.repository_owner }}
