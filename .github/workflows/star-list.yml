@@ -6,9 +6,7 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    # Execute every week at 0:00 CST (UTC+8), which is 16:00 UTC on the previous day
-    # - cron: '0 16 * * 0' # This runs at 16:00 UTC on Saturday, which is 0:00 CST on Sunday
-    - cron: '5 0 * * *' # This runs at 0:05 CST on every day
+    - cron: '5 0 * * *'
   watch:
     types: [started]
 
@@ -17,6 +15,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          
+      - name: Configure Git
+        run: |
+          git config --global user.email "${{ secrets.USER_EMAIL }}"
+          git config --global user.name "${{ github.repository_owner }}"
+          
       - name: some generator
         uses: simonecorsi/mawesome@v2.2.0
         with:
@@ -24,3 +31,4 @@ jobs:
           github-email: ${{ secrets.USER_EMAIL }}
           template-path: "template/README.ejs"
           github-name: ${{ github.repository_owner }}
+          push-repository: true
