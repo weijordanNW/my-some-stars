@@ -1850,13 +1850,13 @@
       "url": "https://api.github.com/repos/mattpocock/skills",
       "languages_url": "https://api.github.com/repos/mattpocock/skills/languages",
       "created_at": "2026-02-03T11:15:53Z",
-      "updated_at": "2026-06-25T04:19:08Z",
+      "updated_at": "2026-06-25T04:19:31Z",
       "git_url": "git://github.com/mattpocock/skills.git",
       "ssh_url": "git@github.com:mattpocock/skills.git",
       "clone_url": "https://github.com/mattpocock/skills.git",
       "homepage": "",
-      "stargazers_count": 145124,
-      "watchers_count": 145124,
+      "stargazers_count": 145125,
+      "watchers_count": 145125,
       "language": "Shell",
       "topics": []
     }
